@@ -27,8 +27,7 @@ def calculate_probability(pattern, npads):
         #convert to numbers
         for k in range(npads):
             l[k] = int(ls[k])
-        
-    #The probability of the first jump (uniform)
+    
     prob = 1.0
     remaining = l
     pad = 0
@@ -36,6 +35,7 @@ def calculate_probability(pattern, npads):
     i = 0
         
     if (l.count(1) == 0):
+        #The probability of the first jump (uniform)
         prob = 1.0 / (npads + 1)
     
     while (remaining.count(1)):
@@ -57,7 +57,7 @@ def calculate_probability(pattern, npads):
     return prob * (l.count(1) + 1)
 
 
-def do_the_thing(npads):
+def find_num_jumps(npads):
     x = 0
 
     for k in range(np.power(2, npads)):
@@ -65,6 +65,7 @@ def do_the_thing(npads):
     
     return x
 
+# Turns out the solution the sum of the harmonic series
 def harmonic(n):
     x = 0
     for k in range(1, n + 2):
@@ -76,7 +77,7 @@ def make_plot(start, end):
     x = np.array( range(start, end) )
     y = np.zeros(len(x))
     for k in range(len(x)):
-        y[k] = harmonic(x[k])
+        y[k] = do_the_thing(x[k])
     plt.plot(x,y)
     plt.xlabel("number of pads")
     plt.ylabel("average number of jumps")
