@@ -77,7 +77,7 @@ def make_plot(start, end):
     x = np.array( range(start, end) )
     y = np.zeros(len(x))
     for k in range(len(x)):
-        y[k] = do_the_thing(x[k])
+        y[k] = find_num_jumps(x[k])
     plt.plot(x,y)
     plt.xlabel("number of pads")
     plt.ylabel("average number of jumps")
